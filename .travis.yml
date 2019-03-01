@@ -16,7 +16,9 @@ before_script:
 - docker build . -t $REPO:v$TRAVIS_BUILD_NUMBER
 
 script:
-- docker run --rm $REPO:v$TRAVIS_BUILD_NUMBER /usr/sbin/mosquitto --help
+- >
+  docker run --rm $REPO:v$TRAVIS_BUILD_NUMBER /usr/sbin/mosquitto --help |
+  grep "display this help"
 
 before_deploy:
 - docker tag $REPO:v$TRAVIS_BUILD_NUMBER $REPO:latest
