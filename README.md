@@ -1,5 +1,8 @@
 # Mosquitto Server
-A containerized mosquitto server
+
+> A raspberry pi friendly containerized mosquitto server
+
+[![Build Status](https://travis-ci.org/danie1cohen/docker-mqtt.svg?branch=master)](https://travis-ci.org/danie1cohen/docker-mqtt)
 
 
 ## Transport Layer Security
