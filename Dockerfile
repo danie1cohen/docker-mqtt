@@ -8,10 +8,9 @@
 #       _\/\\\__\/\\\__\/\\\________\/\\\\____\//\\\\\______\//\\\\\___
 #        _\///___\///___\///_________\////______\/////________\/////____
 
-FROM debian:jessie
+FROM resin/rpi-raspbian:latest
 
-EXPOSE 8883
-EXPOSE 1883
+EXPOSE 1883 8883
 
 RUN mkdir -p /mqtt /opt/mosquitto /ssl
 WORKDIR /mqtt
