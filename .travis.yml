@@ -1,0 +1,28 @@
+language: python
+python:
+- '3.3'
+services:
+- docker
+env:
+  global:
+  - REPO=danie1cohen/mqtt
+
+before_script:
+# make the build use qemu so arm
+- docker run --rm --privileged multiarch/qemu-user-static:register --reset
+- docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+#- docker pull $REPO
+#- docker build . -t $REPO:v$TRAVIS_BUILD_NUMBER --cache-from $REPO
+- docker build . -t $REPO:v$TRAVIS_BUILD_NUMBER
+
+script:
+- docker run $REPO:v$TRAVIS_BUILD_NUMBER hass --version
+
+before_deploy:
+- docker tag $REPO:v$TRAVIS_BUILD_NUMBER $REPO:latest
+
+deploy:
+  provider: script
+  script: docker push $REPO:latest
+  on:
+    branch: master
