@@ -3,11 +3,10 @@
 DEFAULT_USER=mosquitto
 DEFAULT_PWD=$(head /dev/urandom | base64 | cut -c1-20 | head -n1)
 
-
-adduser mosquitto
-
 export MOSQUITTOUSER=${MQTT_USER:-$DEFAULT_USER}
 PWD=${MQTT_PWD:-$DEFAULT_PWD}
+
+adduser $MOSQUITTOUSER
 
 if [ ! -f /opt/mosquitto/passwd ]; then
     echo "No mqtt user database found. Creating a new one."
