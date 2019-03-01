@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -y \
   curl \
   net-tools \
   sed \
-  apt-transport-http
+  apt-transport-https
 
 RUN curl http://repo.mosquitto.org/debian/mosquitto-repo.gpg.key \
   -o /tmp/mosquitto-repo.gpg.key
